@@ -7,7 +7,7 @@ using std::endl;
 template<typename T> void FillRand(T** arr, const int m, const int n);
 template<typename T> void Print(T** arr, const int m, const int n);
 
-template<typename T> T** Allocate(const int m, const int n);
+template<typename T> T** Allocate(const T m, const T n);
 template<typename T> void Clear(T** arr, const int m);
 
 template<typename T> void push_row_back(T**& arr, int& m, const int n);
@@ -25,6 +25,8 @@ template<typename T> void insert_col(T** arr,const int m, int& n, int index);
 template<typename T> void pop_col_back(T** arr, const int m, int& n);
 template<typename T> void pop_col_front(T** arr, const int m, int& n);
 template<typename T> void erase_col(T** arr, const int m, int& n, int index);
+
+
 
 //#define PUSH_ROW_BACK
 //#define PUSH_ROW_FRONT
@@ -135,6 +137,7 @@ void main()
 	Print(arr, m, n);
 #endif // POP_COL_FRONT
 
+
 #ifdef ERASE_COL
 	cout << "Введите индекс удаляемого столбца: "; cin >> index;
 	erase_col(arr, m, n, index);
@@ -152,7 +155,7 @@ void FillRand(T** arr, const int m, const int n)
 	{
 		for (int j = 0; j < n; j++)
 		{
-			arr[i][j] = double(rand() % 100) / 10;
+			arr[i][j] = rand() % 100;
 		}
 	}
 }
@@ -172,7 +175,7 @@ void Print(T** arr, const int m, const int n)
 }
 
 template<typename T> 
-T** Allocate(const int m, const int n)
+T** Allocate(const T m, const T n)
 {
 	T** arr = new T* [m] {};
 	for (int i = 0; i < m; i++)arr[i] = new T[n];
